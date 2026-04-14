@@ -306,19 +306,8 @@
             <!-- 年収 -->
             <div class="form-section">
                 <div class="form-group">
-                    <label for="income">1. 年収</label>
-                    <select id="income" required>
-                        <option value="">選択してください</option>
-                        <option value="2500000">300万円未満</option>
-                        <option value="3500000">300〜400万円</option>
-                        <option value="4500000">400〜500万円</option>
-                        <option value="5500000">500〜600万円</option>
-                        <option value="6500000">600〜700万円</option>
-                        <option value="7500000">700〜800万円</option>
-                        <option value="8500000">800〜900万円</option>
-                        <option value="9500000">900〜1000万円</option>
-                        <option value="12000000">1000万円以上</option>
-                    </select>
+                    <label for="income">1. 年収（万円）</label>
+                    <input type="number" id="income" min="0" step="1" placeholder="例: 500" required>
                 </div>
             </div>
 
@@ -425,10 +414,14 @@
                 ⚠️ ※あくまでも目安です。詳細は税理士にご相談ください。
             </div>
 
-            <p style="margin-top: 20px; font-weight: 600; color: #2A9D8F;">▼ お得なふるさと納税サイトはこちら</p>
-            <a href="https://px.a8.net/svt/ejp?a8mat=4B1G9O+9Q2X96+54OC+5Z6WX" rel="nofollow">
-<img border="0" width="468" height="60" alt="" src="https://www26.a8.net/svt/bgt?aid=260408220588&wid=002&eno=01&mid=s00000023934001004000&mc=1"></a>
-<img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=4B1G9O+9Q2X96+54OC+5Z6WX" alt="">
+            <div id="affiliateBanner" style="margin-top: 20px; text-align: center; padding: 15px; background: #f0faf9; border-radius: 8px; border: 1px solid #c0e0dc;">
+                <p style="font-weight: 600; color: #2A9D8F; margin-bottom: 10px;">▼ お得なふるさと納税サイトはこちら</p>
+                <a href="https://px.a8.net/svt/ejp?a8mat=4B1G9O+9Q2X96+54OC+5Z6WX" rel="nofollow" style="display: inline-block;">
+                    <img border="0" width="468" height="60" alt="ふるさと納税でお得に返礼品をもらおう" src="https://www26.a8.net/svt/bgt?aid=260408220588&wid=002&eno=01&mid=s00000023934001004000&mc=1" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" onerror="this.style.display='none'; document.getElementById('affiliateFallback').style.display='block';">
+                </a>
+                <a id="affiliateFallback" href="https://px.a8.net/svt/ejp?a8mat=4B1G9O+9Q2X96+54OC+5Z6WX" rel="nofollow" style="display: none; padding: 12px 24px; background-color: #2A9D8F; color: white; border-radius: 8px; text-decoration: none; font-weight: 600;">🎁 ふるさと納税サイトをチェック！</a>
+                <img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=4B1G9O+9Q2X96+54OC+5Z6WX" alt="">
+            </div>
 
             <button class="cta-button" onclick="window.open('https://www.furusato-tax.jp/', '_blank');">
                 🎁 お得なふるさと納税サイトをチェック！

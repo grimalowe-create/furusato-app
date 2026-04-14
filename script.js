@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function calculateDeduction() {
     // フォーム値の取得
-    const income = parseInt(document.getElementById('income').value);
+    const incomeMan = parseInt(document.getElementById('income').value);
+    const income = incomeMan * 10000; // 万円→円に変換
     const family = document.querySelector('input[name="family"]:checked').value;
     const housing = document.querySelector('input[name="housing"]:checked').value === 'yes';
     const medical = document.querySelector('input[name="medical"]:checked').value === 'yes';
