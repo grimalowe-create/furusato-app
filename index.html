@@ -318,20 +318,42 @@
                     <label>2. 家族構成</label>
                     <div class="radio-group">
                         <label class="radio-label">
-                            <input type="radio" name="family" value="single" required> 独身
+                            <input type="radio" name="family" value="single" required onchange="updateChildAgeFields()"> 独身
                         </label>
                         <label class="radio-label">
-                            <input type="radio" name="family" value="double"> 共働き夫婦
+                            <input type="radio" name="family" value="double" onchange="updateChildAgeFields()"> 共働き夫婦
                         </label>
                         <label class="radio-label">
-                            <input type="radio" name="family" value="spouse"> 専業主婦（夫）あり
+                            <input type="radio" name="family" value="spouse" onchange="updateChildAgeFields()"> 専業主婦（夫）あり
                         </label>
                         <label class="radio-label">
-                            <input type="radio" name="family" value="child1"> 子供1人
+                            <input type="radio" name="family" value="child1" onchange="updateChildAgeFields()"> 子供1人
                         </label>
                         <label class="radio-label">
-                            <input type="radio" name="family" value="child2"> 子供2人以上
+                            <input type="radio" name="family" value="child2" onchange="updateChildAgeFields()"> 子供2人以上
                         </label>
+                    </div>
+                </div>
+
+                <!-- 子供の年齢区分（動的表示） -->
+                <div id="childAgeSection" style="display:none; margin-top:20px;">
+                    <div class="form-group" id="child1AgeGroup">
+                        <label>第1子の年齢</label>
+                        <div class="radio-group">
+                            <label class="radio-label"><input type="radio" name="child1age" value="0"> 15歳以下（控除なし）</label>
+                            <label class="radio-label"><input type="radio" name="child1age" value="380000"> 16〜18歳（一般扶養）</label>
+                            <label class="radio-label"><input type="radio" name="child1age" value="630000"> 19〜22歳（特定扶養）</label>
+                            <label class="radio-label"><input type="radio" name="child1age" value="380000"> 23歳以上（一般扶養）</label>
+                        </div>
+                    </div>
+                    <div class="form-group" id="child2AgeGroup" style="display:none; margin-top:16px;">
+                        <label>第2子の年齢</label>
+                        <div class="radio-group">
+                            <label class="radio-label"><input type="radio" name="child2age" value="0"> 15歳以下（控除なし）</label>
+                            <label class="radio-label"><input type="radio" name="child2age" value="380000"> 16〜18歳（一般扶養）</label>
+                            <label class="radio-label"><input type="radio" name="child2age" value="630000"> 19〜22歳（特定扶養）</label>
+                            <label class="radio-label"><input type="radio" name="child2age" value="380000"> 23歳以上（一般扶養）</label>
+                        </div>
                     </div>
                 </div>
             </div>

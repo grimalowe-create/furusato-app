@@ -16,18 +16,28 @@ function calculateDeduction() {
     const medical = document.querySelector('input[name="medical"]:checked').value === 'yes';
     const insurance = document.querySelector('input[name="insurance"]:checked').value === 'yes';
 
+    // 扶養控除額の取得
+    let dependentDeduction = 0;
+    if (family === 'child1' || family === 'child2') {
+        const child1 = document.querySelector('input[name="child1age"]:checked');
+        if (child1) dependentDeduction += parseInt(child1.value);
+        if (family === 'child2') {
+            const child2 = document.querySelector('input[name="child2age"]:checked');
+            if (child2) dependentDeduction += parseInt(child2.value);
+        }
+    }
+
     // 控除額の計算
-    const result = simulateDeduction(income, family, housing, medical, insurance);
+    const result = simulateDeduction(income, family, housing, medical, insurance, dependentDeduction);
 
     // 結果を表示
     displayResult(result);
 }
 
-function simulateDeduction(income, family, housing, medical, insurance) {
-    // 簡易計算用テーブルを使用（実際のふるさと納税控除上限額の目安）
-    // より正確な計算のため、所得階級ごとの標準的な控除上限額を参照
-    
-    let limitAmount = calculateLimitByIncome(income, family);
+function simulateDeduction(income, family, housing, medical, insurance, dependentDeduction = 0) {
+    // 扶養控除を課税所得から差し引いた実効収入で計算
+    const adjustedIncome = Math.max(0, income - dependentDeduction);
+    let limitAmount = calculateLimitByIncome(adjustedIncome, family);
     
     // その他の控除による減額（概算）
     let reductionAmount = 0;
@@ -144,6 +154,26 @@ function displayResult(result) {
     setTimeout(() => {
         resultContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 100);
+}
+
+function updateChildAgeFields() {
+    const family = document.querySelector('input[name="family"]:checked').value;
+    const section = document.getElementById('childAgeSection');
+    const child2Group = document.getElementById('child2AgeGroup');
+
+    if (family === 'child1') {
+        section.style.display = 'block';
+        child2Group.style.display = 'none';
+        // 第2子の選択をリセット
+        document.querySelectorAll('input[name="child2age"]').forEach(r => r.checked = false);
+    } else if (family === 'child2') {
+        section.style.display = 'block';
+        child2Group.style.display = 'block';
+    } else {
+        section.style.display = 'none';
+        document.querySelectorAll('input[name="child1age"]').forEach(r => r.checked = false);
+        document.querySelectorAll('input[name="child2age"]').forEach(r => r.checked = false);
+    }
 }
 
 function updateIncomePreview() {
