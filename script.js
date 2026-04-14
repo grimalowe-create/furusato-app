@@ -66,7 +66,9 @@ function simulateDeduction(income, family, housing, medical, insurance, dependen
         limitAmount: limitAmount,
         realBurden: realBurden,
         taxSavings: taxSavings,
-        recommendAmount: recommendAmount
+        recommendAmount: recommendAmount,
+        housing: housing,
+        medical: medical
     };
 }
 
@@ -146,6 +148,9 @@ function displayResult(result) {
     document.getElementById('taxSavings').textContent = taxSavings;
     document.getElementById('recommendAmount').textContent = recommendAmount;
 
+    // 手続き方法の判定
+    updateProcedureCard(result.housing, result.medical);
+
     // SNSシェアURLを更新
     const shareText = `私のふるさと納税の控除上限額は【${limitAmount}円】でした！自己負担2,000円で返礼品をもらおう🎁 #ふるさと納税 #節税`;
     const encodedText = encodeURIComponent(shareText);
@@ -161,6 +166,23 @@ function displayResult(result) {
     setTimeout(() => {
         resultContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 100);
+}
+
+function updateProcedureCard(housing, medical) {
+    const card = document.getElementById('procedureCard');
+    if (housing || medical) {
+        card.innerHTML = `
+            <div style="background: #fff3e0; border-left: 4px solid #f57c00; border-radius: 6px; padding: 16px;">
+                <div style="font-weight: 700; color: #e65100; margin-bottom: 8px;">📝 確定申告をおすすめします</div>
+                <div style="font-size: 14px; color: #555; line-height: 1.6;">住宅ローン控除や医療費控除がある方は確定申告でまとめて手続きしましょう。</div>
+            </div>`;
+    } else {
+        card.innerHTML = `
+            <div style="background: #e8f5e9; border-left: 4px solid #2e7d32; border-radius: 6px; padding: 16px;">
+                <div style="font-weight: 700; color: #1b5e20; margin-bottom: 8px;">✅ ワンストップ特例制度がおすすめ</div>
+                <div style="font-size: 14px; color: #555; line-height: 1.6;">確定申告不要！寄付先の自治体に申請書を送るだけでOKです。</div>
+            </div>`;
+    }
 }
 
 function updateChildAgeFields() {
