@@ -146,6 +146,16 @@ function displayResult(result) {
     }, 100);
 }
 
+function updateIncomePreview() {
+    const val = parseInt(document.getElementById('income').value);
+    const preview = document.getElementById('incomePreview');
+    if (!isNaN(val) && val > 0) {
+        preview.textContent = `→ ${val}万円（${formatNumber(val * 10000)}円）`;
+    } else {
+        preview.textContent = '';
+    }
+}
+
 function formatNumber(num) {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }

@@ -307,7 +307,8 @@
             <div class="form-section">
                 <div class="form-group">
                     <label for="income">1. 年収（万円）</label>
-                    <input type="number" id="income" min="0" step="1" placeholder="例: 500" required>
+                    <input type="number" id="income" min="0" step="1" placeholder="例: 500" required oninput="updateIncomePreview()">
+                    <div id="incomePreview" style="margin-top:8px; font-size:13px; color:#2A9D8F;"></div>
                 </div>
             </div>
 
