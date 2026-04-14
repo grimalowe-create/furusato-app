@@ -146,6 +146,13 @@ function displayResult(result) {
     document.getElementById('taxSavings').textContent = taxSavings;
     document.getElementById('recommendAmount').textContent = recommendAmount;
 
+    // SNSシェアURLを更新
+    const shareText = `私のふるさと納税の控除上限額は【${limitAmount}円】でした！自己負担2,000円で返礼品をもらおう🎁 #ふるさと納税 #節税`;
+    const encodedText = encodeURIComponent(shareText);
+    const pageUrl = encodeURIComponent(location.href);
+    document.getElementById('shareTwitter').href = `https://twitter.com/intent/tweet?text=${encodedText}`;
+    document.getElementById('shareLine').href = `https://social-plugins.line.me/lineit/share?url=${pageUrl}&text=${encodedText}`;
+
     // 結果コンテナを表示
     const resultContainer = document.getElementById('resultContainer');
     resultContainer.classList.remove('hidden');
