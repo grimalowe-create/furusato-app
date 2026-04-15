@@ -1,14 +1,27 @@
-// プライバシーポリシー アコーディオン
-function togglePrivacy() {
-    const body = document.getElementById('privacyBody');
-    const arrow = document.getElementById('privacyArrow');
-    const header = body.previousElementSibling;
-    const isOpen = body.classList.contains('open');
-
-    body.classList.toggle('open', !isOpen);
-    arrow.textContent = isOpen ? '▼' : '▲';
-    header.setAttribute('aria-expanded', String(!isOpen));
+// プライバシーポリシー モーダル
+function openPrivacyModal() {
+    const modal = document.getElementById('privacyModal');
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
 }
+
+function closePrivacyModal() {
+    const modal = document.getElementById('privacyModal');
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+// オーバーレイクリックで閉じる
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('privacyModal').addEventListener('click', function(e) {
+        if (e.target === this) closePrivacyModal();
+    });
+
+    // Escキーで閉じる
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closePrivacyModal();
+    });
+});
 
 // ふるさと納税控除額シミュレーター
 document.addEventListener('DOMContentLoaded', function() {
