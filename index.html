@@ -293,6 +293,50 @@
                 padding: 20px;
             }
         }
+
+        /* アコーディオン */
+        .accordion {
+            background: white;
+            border-radius: 12px;
+            margin-top: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 25px;
+            background-color: #2A9D8F;
+            color: white;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .accordion-header h2 {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0;
+            color: white;
+        }
+
+        .accordion-arrow {
+            font-size: 14px;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 25px;
+        }
+
+        .accordion-body.open {
+            max-height: 600px;
+            padding: 25px;
+        }
     </style>
 </head>
 <body>
@@ -478,32 +522,36 @@
 
     <!-- プライバシーポリシー -->
     <div class="container">
-        <section id="privacy" style="background: white; border-radius: 12px; padding: 25px; margin-top: 20px;">
-            <h2 style="color: #2A9D8F; font-size: 18px; margin-bottom: 20px;">プライバシーポリシー</h2>
+        <section id="privacy" class="accordion">
+            <div class="accordion-header" onclick="togglePrivacy()" aria-expanded="false" aria-controls="privacyBody">
+                <h2>プライバシーポリシー</h2>
+                <span class="accordion-arrow" id="privacyArrow">▼</span>
+            </div>
+            <div class="accordion-body" id="privacyBody">
+                <h3 style="color: #2A9D8F; font-size: 15px; margin-bottom: 8px;">当サイトについて</h3>
+                <p style="font-size: 14px; color: #555; line-height: 1.7; margin-bottom: 20px;">
+                    当サイトはふるさと納税の控除上限額を計算するシミュレーターです。<br>
+                    計算結果はあくまで目安であり、正確な金額は税理士等にご確認ください。
+                </p>
 
-            <h3 style="color: #2A9D8F; font-size: 15px; margin-bottom: 8px;">当サイトについて</h3>
-            <p style="font-size: 14px; color: #555; line-height: 1.7; margin-bottom: 20px;">
-                当サイトはふるさと納税の控除上限額を計算するシミュレーターです。<br>
-                計算結果はあくまで目安であり、正確な金額は税理士等にご確認ください。
-            </p>
+                <h3 style="color: #2A9D8F; font-size: 15px; margin-bottom: 8px;">広告について</h3>
+                <p style="font-size: 14px; color: #555; line-height: 1.7; margin-bottom: 20px;">
+                    当サイトはA8.net・楽天アフィリエイトを利用した広告を掲載しています。<br>
+                    広告収入によりサイトを運営しています。
+                </p>
 
-            <h3 style="color: #2A9D8F; font-size: 15px; margin-bottom: 8px;">広告について</h3>
-            <p style="font-size: 14px; color: #555; line-height: 1.7; margin-bottom: 20px;">
-                当サイトはA8.net・楽天アフィリエイトを利用した広告を掲載しています。<br>
-                広告収入によりサイトを運営しています。
-            </p>
+                <h3 style="color: #2A9D8F; font-size: 15px; margin-bottom: 8px;">アクセス解析について</h3>
+                <p style="font-size: 14px; color: #555; line-height: 1.7; margin-bottom: 20px;">
+                    当サイトはGoogle Analyticsを使用する場合があります。<br>
+                    収集される情報はGoogle社のプライバシーポリシーに準じます。
+                </p>
 
-            <h3 style="color: #2A9D8F; font-size: 15px; margin-bottom: 8px;">アクセス解析について</h3>
-            <p style="font-size: 14px; color: #555; line-height: 1.7; margin-bottom: 20px;">
-                当サイトはGoogle Analyticsを使用する場合があります。<br>
-                収集される情報はGoogle社のプライバシーポリシーに準じます。
-            </p>
-
-            <h3 style="color: #2A9D8F; font-size: 15px; margin-bottom: 8px;">免責事項</h3>
-            <p style="font-size: 14px; color: #555; line-height: 1.7;">
-                当サイトの情報は正確性を期しておりますが、内容の正確性・完全性を保証するものではありません。<br>
-                当サイトの利用により生じた損害について、一切の責任を負いません。
-            </p>
+                <h3 style="color: #2A9D8F; font-size: 15px; margin-bottom: 8px;">免責事項</h3>
+                <p style="font-size: 14px; color: #555; line-height: 1.7;">
+                    当サイトの情報は正確性を期しておりますが、内容の正確性・完全性を保証するものではありません。<br>
+                    当サイトの利用により生じた損害について、一切の責任を負いません。
+                </p>
+            </div>
         </section>
     </div>
 

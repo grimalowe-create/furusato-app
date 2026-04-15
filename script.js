@@ -1,3 +1,15 @@
+// プライバシーポリシー アコーディオン
+function togglePrivacy() {
+    const body = document.getElementById('privacyBody');
+    const arrow = document.getElementById('privacyArrow');
+    const header = body.previousElementSibling;
+    const isOpen = body.classList.contains('open');
+
+    body.classList.toggle('open', !isOpen);
+    arrow.textContent = isOpen ? '▼' : '▲';
+    header.setAttribute('aria-expanded', String(!isOpen));
+}
+
 // ふるさと納税控除額シミュレーター
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('simulatorForm');
